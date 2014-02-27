@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "description": "Conversion of the TextMate Perl Template Toolkit bundle",
-  "repository": "https://github.com/mshuster/language-perl-template-toolkit",
+  "repository": "https://github.com/mshuster/language-perl-template-toolkit.git",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
