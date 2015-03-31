@@ -1,5 +1,6 @@
 'fileTypes': [
-  'tt'
+  'tt',
+  'tt2'
 ]
 'firstLineMatch': '\\[%.+?%\\]'
 'name': 'HTML (Template Toolkit)'
