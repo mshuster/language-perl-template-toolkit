@@ -1,7 +1,7 @@
 'fileTypes': [
   'tt'
 ]
-'firstLineMatch': '\\[%.+?%\\]'
+'firstLineMatch': '(^%%)|\\[%.+?%\\]'
 'name': 'HTML (Template Toolkit)'
 'patterns': [
   {
@@ -56,6 +56,9 @@
   }
   {
     'include': '#tmpl-container-tag'
+  }
+  {
+    'include': '#tmpl-outline-tag'
   }
   {
     'include': 'text.html.basic'
@@ -155,13 +158,29 @@
         ]
       }
     ]
+  'tmpl-outline-tag':
+    'patterns': [
+      {
+        'begin': '^(%%)'
+        'end': '$'
+        'captures':
+          '0':
+            'name': 'punctuation.definition.tag.tt'
+        'name': 'meta.tag.template.tt'
+        'patterns': [
+          {
+            'include': '#tt-stuff'
+          }
+        ]
+      }
+    ]
   'tt-stuff':
     'patterns': [
       {
         'captures':
           '1':
             'name': 'punctuation.definition.comment.tt'
-        'match': '(#).*?(?=%\\])'
+        'match': '(#).*?(?=(?:%\\]|$))'
         'name': 'comment.line.number-sign.tt'
       }
       {
@@ -183,15 +202,15 @@
         'include': '#string-single-quoted'
       }
       {
+        'match': '\\b(?:IF|END|BLOCK|INCLUDE|ELSE|ELSIF|SWITCH|CASE|UNLESS|WRAPPER|FOR|FOREACH|LAST|NEXT|USE|WHILE|FILTER|IN|GET|CALL|SET|INSERT|MACRO|PERL|TRY|CATCH|THROW|FINAL|STOP|META|DEBUG|RAWPERL|if|end|block|include|else|elsif|switch|case|unless|wrapper|for|foreach|last|next|use|while|filter|in|get|call|set|insert|macro|perl|try|catch|throw|final|stop|meta|debug|rawperl)\\b'
+        'name': 'keyword.control.tt'
+      }
+      {
         'captures':
           '1':
             'name': 'punctuation.definition.variable.tt'
         'match': '(\\$?)\\b[a-z]([a-z0-9_]\\.?)*\\b'
         'name': 'variable.other.tt'
-      }
-      {
-        'match': '\\b(?:IF|END|BLOCK|INCLUDE|ELSE|ELSIF|SWITCH|CASE|UNLESS|WRAPPER|FOR|FOREACH|LAST|NEXT|USE|WHILE|FILTER|IN|GET|CALL|SET|INSERT|MACRO|PERL|TRY|CATCH|THROW|FINAL|STOP|META|DEBUG|RAWPERL)\\b'
-        'name': 'keyword.control.tt'
       }
       {
         'match': '\\||\\|\\||=|_|-|\\*|\\/|\\?|:|div|mod|;|\\+'
