@@ -1,12 +1,12 @@
 {
   "name": "language-perl-template-toolkit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Conversion of the TextMate Perl Template Toolkit bundle",
   "repository": "https://github.com/mshuster/language-perl-template-toolkit.git",
   "license": "MIT",
   "engines": {
-    "atom": ">0.50.0"
+    "atom": ">0.186.0"
   },
   "dependencies": {}
 }
